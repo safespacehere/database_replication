@@ -1,0 +1,98 @@
+drop table cbd, pbd1, pbd2, change_journal, pbd1_journal, pbd2_journal, cbd_journal;
+
+create table change_journal(
+change_id integer PRIMARY KEY,
+change_time timestamptz NOT NULL,
+changed_bd character(10) NOT NULL,
+record_id integer NOT NULL,
+new_string character(103),
+old_string character(103),
+operation_id character(50) NOT NULL
+);
+
+create table cbd(
+id integer PRIMARY KEY,
+country character(50) NOT NULL UNIQUE,
+head_of_state character(50) NOT NULL,
+change_time timestamptz NOT NULL,
+operation_id character(50) NOT NULL
+);
+
+insert into cbd VALUES
+(1, 'Швеция', 'Ульф Кристерссон', current_timestamp, 'Начальная вставка'),
+(2, 'Франция', 'Эмманюэль Макрон', current_timestamp, 'Начальная вставка'),
+(3, 'Лихтенштейн', 'Алоиз Филипп Мария фон унд цу Лихтенштейн', current_timestamp, 'Начальная вставка'),
+(4, 'Япония', 'Фумио Кисида', current_timestamp, 'Начальная вставка'),
+(5, 'Великобритания', 'Риши Сунак', current_timestamp, 'Начальная вставка'),
+(6, 'Норвегия', 'Йонас Гар Стёре', current_timestamp, 'Начальная вставка'),
+(7, 'Италия', 'Серджо Маттарелла', current_timestamp, 'Начальная вставка'),
+(8, 'Чехия', 'Милош Земан', current_timestamp, 'Начальная вставка'),
+(9, 'Польша', 'Анджей Дуда', current_timestamp, 'Начальная вставка'),
+(10, 'Швейцария', 'Иньяцио Кассис', current_timestamp, 'Начальная вставка');
+
+create table pbd1(
+id integer PRIMARY KEY,
+country character(50) NOT NULL UNIQUE,
+head_of_state character(50) NOT NULL,
+change_time timestamptz NOT NULL,
+operation_id character(50) NOT NULL
+);
+
+insert into pbd1 VALUES
+(1, 'Швеция', 'Ульф Кристерссон', current_timestamp, 'Начальная вставка'),
+(2, 'Франция', 'Эмманюэль Макрон', current_timestamp, 'Начальная вставка'),
+(3, 'Лихтенштейн', 'Алоиз Филипп Мария фон унд цу Лихтенштейн', current_timestamp, 'Начальная вставка'),
+(4, 'Япония', 'Фумио Кисида', current_timestamp, 'Начальная вставка'),
+(5, 'Великобритания', 'Риши Сунак', current_timestamp, 'Начальная вставка'),
+(6, 'Норвегия', 'Йонас Гар Стёре', current_timestamp, 'Начальная вставка'),
+(7, 'Италия', 'Серджо Маттарелла', current_timestamp, 'Начальная вставка'),
+(8, 'Чехия', 'Милош Земан', current_timestamp, 'Начальная вставка'),
+(9, 'Польша', 'Анджей Дуда', current_timestamp, 'Начальная вставка'),
+(10, 'Швейцария', 'Иньяцио Кассис', current_timestamp, 'Начальная вставка');
+
+create table pbd2(
+id integer PRIMARY KEY,
+country character(50) NOT NULL UNIQUE,
+head_of_state character(50) NOT NULL,
+change_time timestamptz NOT NULL,
+operation_id character(50) NOT NULL
+);
+
+insert into pbd2 VALUES
+(1, 'Швеция', 'Ульф Кристерссон', current_timestamp, 'Начальная вставка'),
+(2, 'Франция', 'Эмманюэль Макрон', current_timestamp, 'Начальная вставка'),
+(3, 'Лихтенштейн', 'Алоиз Филипп Мария фон унд цу Лихтенштейн', current_timestamp, 'Начальная вставка'),
+(4, 'Япония', 'Фумио Кисида', current_timestamp, 'Начальная вставка'),
+(5, 'Великобритания', 'Риши Сунак', current_timestamp, 'Начальная вставка'),
+(6, 'Норвегия', 'Йонас Гар Стёре', current_timestamp, 'Начальная вставка'),
+(7, 'Италия', 'Серджо Маттарелла', current_timestamp, 'Начальная вставка'),
+(8, 'Чехия', 'Милош Земан', current_timestamp, 'Начальная вставка'),
+(9, 'Польша', 'Анджей Дуда', current_timestamp, 'Начальная вставка'),
+(10, 'Швейцария', 'Иньяцио Кассис', current_timestamp, 'Начальная вставка');
+
+create table cbd_journal(
+id integer PRIMARY KEY,
+country character(50) NOT NULL UNIQUE,
+head_of_state character(50) NOT NULL,
+change_time timestamptz NOT NULL,
+operation_id character(50) NOT NULL,
+add_time timestamptz NOT NULL
+);
+
+create table pbd2_journal(
+id integer PRIMARY KEY,
+country character(50) NOT NULL UNIQUE,
+head_of_state character(50) NOT NULL,
+change_time timestamptz NOT NULL,
+operation_id character(50) NOT NULL,
+add_time timestamptz NOT NULL
+);
+
+create table pbd1_journal(
+id integer PRIMARY KEY,
+country character(50) NOT NULL UNIQUE,
+head_of_state character(50) NOT NULL,
+change_time timestamptz NOT NULL,
+operation_id character(50) NOT NULL,
+add_time timestamptz NOT NULL
+);
